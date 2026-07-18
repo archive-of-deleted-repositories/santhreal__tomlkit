@@ -317,6 +317,8 @@ def test_key_rejects_empty_iterable() -> None:
     # Empty key parts would serialize as " = 1", which is not valid TOML.
     with pytest.raises(ValueError, match="at least one key part"):
         tomlkit.key([])
+    with pytest.raises(ValueError, match="at least one key part"):
+        tomlkit.key(())
 
 
 def test_key_value() -> None:
